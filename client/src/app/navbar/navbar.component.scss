@@ -1,0 +1,25 @@
+.spacer {
+    flex: 1 1 auto;
+}
+
+a:active, a:link, a:visited {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.item {
+    margin-left: 20px;
+    font-size: 16px;
+}
+
+.item:not(:last-child) {
+    padding-right: 20px;
+    border-right: 1px lightgray solid;
+}
+
+.icon {
+    position: relative;
+    top: 5px;
+    margin-right: 4px;
+}

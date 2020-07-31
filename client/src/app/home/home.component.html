@@ -1,0 +1,22 @@
+<div class="list-container">
+    <mat-grid-list gutterSize="4px" cols="5" rowHeight="1:2">
+        <mat-grid-tile *ngFor="let bot of bots">
+            <mat-card class="bot-card">
+                <mat-card-header>
+                    <img mat-card-avatar [src]="bot.avatar">
+                    <mat-card-title >{{bot.name}}</mat-card-title>
+                    <mat-card-subtitle>Server Count: {{bot.server_count || '?'}}</mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-content class="bot-card-content">
+                    <p>{{bot.short_desc}}</p>
+                </mat-card-content>
+                <mat-card-actions>
+                    <button mat-button>INVITE</button>
+                    <button mat-button>VIEW</button>
+                </mat-card-actions>
+            </mat-card>
+        </mat-grid-tile>
+    </mat-grid-list>
+</div>
+
+

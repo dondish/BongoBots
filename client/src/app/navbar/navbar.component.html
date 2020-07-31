@@ -1,0 +1,9 @@
+<mat-toolbar>
+    <a href="/">BongoBots</a>
+    <span class="spacer"></span>
+    <a class="item" *ngFor="let option of filteredValues()" [href]="option.href" [routerLink]="option.routerLink">
+        <mat-icon class="icon">{{option.icon}}</mat-icon>
+        {{option.name | uppercase}}
+    </a>
+
+</mat-toolbar>
