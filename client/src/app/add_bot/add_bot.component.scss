@@ -1,25 +1,13 @@
-@use '../mixins';
+@use '../mixins'; 
 @use '../colors';
 
 .page-header {
     @include mixins.page-header;
 }
 
-.list-container {
-    margin-top: 20px;
+.container {
+    @include mixins.container;
 }
-
-.header-button-container button {
-    background-color: colors.$secondary;
-    color: black;
-    margin-right: 5px;
-}
-
-.header-button-container button .mat-icon {
-    margin-top: -2px;
-    margin-right: .3rem;
-}
-
 .loading-container {
     display: flex;
     justify-content: center;
@@ -34,4 +22,12 @@
 .loading-container-text {
     padding-top: 2rem;
     text-align: center;
+}
+
+.titleContainer, .title, .subtitle {
+    text-align: center;
+}
+
+p {
+    font-size: 16px;
 }

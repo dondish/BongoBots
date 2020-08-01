@@ -1,0 +1,87 @@
+<div class="page-header">
+    <h1 class="mat-display-3">Add your bot to BongoBots!</h1>
+    <p class="mat-subtitle">A great option if you want to get more exposure for your bot!
+    Just fill in this form, and we will review it as soon as possible!</p>
+</div>
+<div class="container">
+    <div class="formContainer">
+        <form [formGroup]="addBotForm" (ngSubmit)="submitBot()">
+            <mat-form-field appearance="fill" style="width: 100%">
+                <mat-label>Bot ID</mat-label>
+                <mat-error *ngIf="touchedAndInvalid(botId) && botId.errors.required">Bot ID is required.</mat-error>
+                <mat-error *ngIf="touchedAndInvalid(botId) && botId.errors.pattern">Bot ID is invalid.</mat-error>
+                <input formControlName="botId" matInput required>
+            </mat-form-field>
+            <br>
+            <mat-form-field appearance="fill" style="width: 100%">
+                <mat-label>Bot Name</mat-label>
+                <mat-error *ngIf="touchedAndInvalid(botName) && botName.errors.required">Name is required.</mat-error>
+                <input formControlName="botName" matInput required>
+            </mat-form-field>
+            <br>
+            <mat-form-field appearance="fill" style="width: 100%">
+                <mat-label>Bot Prefix</mat-label>
+                <mat-error *ngIf="touchedAndInvalid(prefix) && prefix.errors.required">Prefix is required.</mat-error>
+                <mat-error *ngIf="touchedAndInvalid(prefix) && prefix.errors.maxlength">Prefix is at most 10 characters.</mat-error>
+                <input formControlName="prefix" matInput required> 
+            </mat-form-field>
+            <br>
+            <mat-form-field appearance="fill" style="width: 100%">
+                <mat-error *ngIf="touchedAndInvalid(library) && library.errors.required">Library is required.</mat-error>
+                <mat-label>Discord Library</mat-label>
+                <mat-select formControlName="library" required>
+                    <mat-option *ngFor="let option of libraries" [value]="option">{{option}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <br>
+            <mat-form-field appearance="fill" style="width: 100%">
+                <mat-error *ngIf="touchedAndInvalid(invite) && invite.errors.pattern">Invite URL is invalid.</mat-error>
+                <mat-label>Invite URL</mat-label>
+                <input formControlName="invite" matInput>
+            </mat-form-field>
+            <br>
+            <mat-form-field appearance="fill" style="width: 100%">
+                <mat-error *ngIf="touchedAndInvalid(short_desc) && short_desc.errors.required">Short description is required.</mat-error>
+                <mat-error *ngIf="touchedAndInvalid(short_desc) && short_desc.errors.maxlength">{{ short_desc.errors.maxlength.actualLength}}/{{ short_desc.errors.maxlength.requiredLength }} characters.</mat-error>
+                <mat-label>Short Description</mat-label>
+                <input formControlName="short_desc" matInput required>
+            </mat-form-field>
+            <br>
+            <mat-form-field appearance="fill" style="width: 100%; height: 25%;">
+                <mat-error *ngIf="touchedAndInvalid(long_desc) && long_desc.errors.required">Long description is required.</mat-error>
+                <mat-error *ngIf="touchedAndInvalid(long_desc) && long_desc.errors.minlength">Missing {{ long_desc.errors.minlength.requiredLength - long_desc.errors.minlength.actualLength}} characters.</mat-error>
+                <mat-label>Long Description</mat-label>
+                <textarea matInput formControlName="long_desc" cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="10" required></textarea>
+            </mat-form-field>
+            <br>
+            <mat-form-field appearance="fill" style="width: 100%">
+                <mat-error *ngIf="touchedAndInvalid(support_server) && support_server.errors.pattern">Server URL is invalid.</mat-error>
+                <mat-label>Support Server URL</mat-label>
+                <input formControlName="support_server" matInput>
+            </mat-form-field>
+            <br>
+            <mat-form-field appearance="fill" style="width: 100%">
+                <mat-error *ngIf="touchedAndInvalid(source_code) && source_code.errors.pattern">Source Code URL is invalid.</mat-error>
+                <mat-label>Source Code URL</mat-label>
+                <input formControlName="source_code" matInput>
+            </mat-form-field>
+            <br>
+            <mat-form-field appearance="fill" style="width: 100%">
+                <mat-error *ngIf="touchedAndInvalid(website) && website.errors.pattern">Website URL is invalid.</mat-error>
+                <mat-label>Website URL</mat-label>
+                <input formControlName="website" matInput>
+            </mat-form-field>
+            <br>
+            <mat-form-field appearance="fill" style="width: 100%">
+                <mat-error *ngIf="touchedAndInvalid(ownerIds) && ownerIds.errors.pattern">Owners should be seperated with a comma.</mat-error>
+                <mat-label>Other Developers' IDs (not including yourself)</mat-label>
+                <input formControlName="ownerIds" matInput>
+            </mat-form-field>
+            <br>
+            <p class="describeAction">Make sure all the information above is correct before submitting! Good luck!</p>
+            <div class="submitContainer">
+                <button type="submit" matButton color="accent" style="width: 100%">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>

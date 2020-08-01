@@ -1,22 +1,15 @@
-<div class="list-container">
-    <mat-grid-list gutterSize="4px" cols="5" rowHeight="1:2">
-        <mat-grid-tile *ngFor="let bot of bots">
-            <mat-card class="bot-card">
-                <mat-card-header>
-                    <img mat-card-avatar [src]="bot.avatar">
-                    <mat-card-title >{{bot.name}}</mat-card-title>
-                    <mat-card-subtitle>Server Count: {{bot.server_count || '?'}}</mat-card-subtitle>
-                </mat-card-header>
-                <mat-card-content class="bot-card-content">
-                    <p>{{bot.short_desc}}</p>
-                </mat-card-content>
-                <mat-card-actions>
-                    <button mat-button>INVITE</button>
-                    <button mat-button>VIEW</button>
-                </mat-card-actions>
-            </mat-card>
-        </mat-grid-tile>
-    </mat-grid-list>
+<div class="page-header">
+    <h1 class="mat-display-3">Find a bot for you!</h1>
+    <div class="header-button-container">
+        <button mat-button><mat-icon>favorite</mat-icon>Popular</button>
+        <button mat-button><mat-icon>verified</mat-icon>Verified</button>
+        <button mat-button><mat-icon>eco</mat-icon>New</button>
+        <button mat-button><mat-icon>grade</mat-icon>For You</button>
+    </div>
 </div>
-
-
+<div class="page-content">
+    <div class="list-container">
+        <h2 class="mat-display-2 list-item-title">Popular Bots</h2>
+        <app-bot-grid [bots]="bots"></app-bot-grid>
+    </div>
+</div>

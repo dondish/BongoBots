@@ -6,9 +6,8 @@ const user = require('../modules/user');
 
 
 router.get('/', async (req, res, next) => {
-    const bots = {};
-    const chunked = chunk(bots, 3);
-    res.render('index', { title: 'Home', botsData: bots, chunked})
+    console.log('Got request')
+    return res.json('IT WORKS')
 });
 
 module.exports = router;

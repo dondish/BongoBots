@@ -1,0 +1,31 @@
+@use './colors';
+
+@mixin page-header {
+    position: relative;
+    width: 100%;
+    padding: 40px;
+    top: -40px;
+    left: -40px;
+    color: colors.$secondary;
+    background-color: colors.$primary;
+}
+
+@mixin page-header-image {
+    height: 128px;
+    width: 128px;
+    border-radius: 50%;
+}
+
+@mixin container {
+    padding-top: 2.5rem;
+    padding-left: 12.5rem;
+    padding-right: 12.5rem;
+    padding-bottom: 2.5rem;
+}
+
+@mixin spinner {
+    .spinner {
+        stroke: colors.$surface;
+    }
+    
+}

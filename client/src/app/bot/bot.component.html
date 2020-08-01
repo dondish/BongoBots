@@ -1,0 +1,29 @@
+<div *ngIf="loading">
+    <div class="loading-container">
+        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    </div>
+    <div class="loading-container-text"> 
+        <div class="mat-display-2" >Loading...</div>
+    </div>
+</div>
+<div *ngIf="!loading">
+    <div class="page-header">
+        <mat-grid-list cols="9" gutterSize="15px">
+            <mat-grid-tile class="page-header-tile">
+                <img class="page-header-image page-header-item" [src]="bot.avatar">
+            </mat-grid-tile>
+            <mat-grid-tile colspan="5" class="page-header-tile">
+                <h1 class="mat-display-3 page-header-item">{{bot.name}}<span><br>{{bot.short_desc}}</span></h1>
+            </mat-grid-tile>
+            <mat-grid-tile  colspan="3" class="header-button-container">
+                <button mat-button class="btn" style="animation-delay:0.07s"><mat-icon>link</mat-icon>Invite</button>
+                <button mat-button class="btn" style="animation-delay:0.14s"><mat-icon>contact_support</mat-icon>Support Link</button>
+                <button mat-button class="btn" style="animation-delay:0.21s"><mat-icon>done</mat-icon>Upvote</button>
+            </mat-grid-tile>
+        </mat-grid-list>
+    </div>
+    <div class="container">
+        <p>{{bot.long_desc}}</p>
+    </div>
+</div>
+

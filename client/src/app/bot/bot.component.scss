@@ -1,0 +1,78 @@
+@use '../mixins'; 
+@use '../colors';
+
+@include mixins.spinner;
+
+.page-header {
+    @include mixins.page-header;
+}
+
+.container {
+    @include mixins.container;
+}
+
+.page-header-tile {
+    display: flex;
+    align-items: center;
+}
+
+.header-button-container button {
+    background-color: colors.$secondary;
+    color: black;
+    margin-right: 5px;
+}
+
+.header-button-container button .mat-icon {
+    margin-top: -2px;
+    margin-right: .3rem;
+}
+
+.page-header-item {
+    margin: 0;
+}
+
+h1.page-header-item {
+    padding-left: 10px;
+    text-align: left;
+    width: 100%;
+    & > span {
+        margin-left: 20px;
+        font-size: 32px;
+        opacity: 50%;
+    }
+}
+
+.page-header-image {
+    @include mixins.page-header-image;
+}
+
+
+.bouncy {
+    animation:bouncy 5s infinite linear;
+    position:relative;
+}
+@keyframes bouncy {
+    0%{top:0em}
+    40%{top:0em}
+    43%{top:-0.9em}
+    46%{top:0em}
+    48%{top:-0.4em}
+    50%{top:0em}
+    100%{top:0em;}
+}
+
+.loading-container {
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    width: auto;
+    min-height: auto;
+    padding-top: 25%;
+    padding-right: 25%;
+    padding-left: 25%;
+}
+
+.loading-container-text {
+    padding-top: 2rem;
+    text-align: center;
+}

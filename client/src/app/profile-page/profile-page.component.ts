@@ -11,7 +11,7 @@ export class ProfilePageComponent implements OnInit {
   authService: AuthService;
   user: User;
 
-  constructor(authService: AuthService) { 
+  constructor(authService: AuthService) {
     this.authService = authService;
   }
 

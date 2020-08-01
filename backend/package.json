@@ -3,9 +3,27 @@
   "version": "1.0.0",
   "description": "hi",
   "main": "src/index.js",
+  "scripts": {
+    "main": "node src/index.js",
+    "dev": "nodemon src/index.js"
+  },
   "author": "Oded Shapira and Jacob Tyrell",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.17.1"
+    "cheerio": "^1.0.0-rc.3",
+    "chunk": "^0.0.2",
+    "cookie-parser": "^1.4.5",
+    "cookie-session": "^1.4.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "node-fetch": "^2.6.0",
+    "passport": "^0.4.1",
+    "passport-discord": "^0.1.4",
+    "pg": "^8.3.0",
+    "sequelize": "^6.3.3",
+    "signale": "^1.4.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
   }
 }

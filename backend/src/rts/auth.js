@@ -12,9 +12,9 @@ const user = require('../modules/user');
 
 
 passport.use(new Strategy({
-    clientID: '',
-    clientSecret: '',
-    callbackURL: '',
+    clientID: process.env.CLIENTID,
+    clientSecret: process.env.CLIENTSECRET,
+    callbackURL: process.env.CALLBACKURL,
     scope: ['identify']
 }, function(accToken, refreshToken, profile, done) {
     process.nextTick(function() {
@@ -23,7 +23,7 @@ passport.use(new Strategy({
 }));
 
 passport.serializeUser((user, done) => done(null, user));
-passport.deserialiseUser((user, done) => done(null, user));
+passport.deserializeUser((user, done) => done(null, user));
 
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({
@@ -33,16 +33,15 @@ router.use(bodyParser.urlencoded({
 router.get('/', passport.authenticate('discord'));
 
 router.get('/login', (req, res, next) => {
-    res.redirect('/auth');
+    return res.redirect('/auth');
 })
 
 router.get('/info', (req, res, next) => {
-    res.json(req.user)
+    return res.json(req.user);
 });
 
 //todo: finish this function with callback stuff including database stuff
-router.get('/callback', passport.authenicate('discord', {
-}), (req, res, next) => {
+router.get('/callback', passport.authenticate('discord', {}), (req, res, next) => {
     if (!user) { 
         // populate database with new user details
         let userDetails = {
@@ -63,7 +62,7 @@ router.get('/callback', passport.authenicate('discord', {
             avatar: req.user.avatar // grabs avatar if been changed
         }
     }
-    
+    res.redirect('/')
     // this should ideally redirect back to homepage
 
 })

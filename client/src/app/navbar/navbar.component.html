@@ -1,9 +1,34 @@
-<mat-toolbar>
-    <a href="/">BongoBots</a>
-    <span class="spacer"></span>
-    <a class="item" *ngFor="let option of filteredValues()" [href]="option.href" [routerLink]="option.routerLink">
-        <mat-icon class="icon">{{option.icon}}</mat-icon>
-        {{option.name | uppercase}}
-    </a>
+<mat-toolbar class="toolbar" >
+    
+    <mat-toolbar-row *ngIf="!searchMode">
+        <a [routerLink]="['/']">BongoBots</a>
+        <span class="spacer"></span>
+        <a class="item" *ngFor="let option of filteredValues()" [href]="option.href">
+            <mat-icon class="icon">{{option.icon}}</mat-icon>
+            {{option.name | uppercase}}
+        </a>
+        <button mat-icon-button (click)="toggleSearch()" class="search-icon" aria-label="Search icon button with search icon">
+            <mat-icon>search</mat-icon>
+        </button>
+    </mat-toolbar-row>
+    
+    <mat-toolbar-row *ngIf="searchMode">
+        <input type="search"
+                class="search-bar"
+                placeholder="Search"
+                aria-label="Search Criteria"
+                [formControl]="searchControl"
+                [matAutocomplete]="auto">
+        <mat-autocomplete #auto="matAutocomplete" (optionSelected)="openBot($event)">
+        <mat-option *ngFor="let option of searchResults | async" [value]="option.id">
+            
+            {{option.name}}
+        </mat-option>
+        </mat-autocomplete>
+        <span class="spacer"></span>
+        <button mat-icon-button (click)="toggleSearch()" class="search-icon" aria-label="Close search icon button with close icon">
+            <mat-icon>close</mat-icon>
+        </button>
+    </mat-toolbar-row>
 
 </mat-toolbar>

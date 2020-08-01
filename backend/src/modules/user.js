@@ -28,13 +28,13 @@ const mod = (req, res, next) => {
     }
 };
 
-const admin = (req, res, next => {
+const admin = (req, res, next) => {
     if (req.user && req.user.admin) {
         next();
     } else {
         res.status(400).render('error', { title: 'Error', status: 400, message: 'You are not a web admin. sad uwu'})
     }
-});
+};
 
 const inServer = (req, res, next) => {
     if (req.user) {
