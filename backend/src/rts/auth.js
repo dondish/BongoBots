@@ -1,26 +1,47 @@
 const express = require('express');
 const router = express.Router();
 const passport = require('passport');
-const session = require('cookie-session');
 const Strategy = require('passport-discord').Strategy;
 const bodyParser = require('body-parser');
-const cookieParser = require('cookie-parser');
-const cookieSession = require('cookie-session');
-const database = null;
+const refresh = require('passport-oauth2-refresh');
 
 const user = require('../modules/user');
+const { User } = require('../modules/database');
 
-
-passport.use(new Strategy({
+const discordStrat = new Strategy({
     clientID: process.env.CLIENTID,
     clientSecret: process.env.CLIENTSECRET,
     callbackURL: process.env.CALLBACKURL,
     scope: ['identify']
 }, function(accToken, refreshToken, profile, done) {
+    console.log(profile);
+    const {
+        id, 
+        username,
+        avatar,
+        discriminator
+    } = profile;
+    User.findOrCreate({
+        where: {
+            id
+        },
+        defaults: {
+            id,
+            username,
+            discriminator,
+            avatar,
+            moderator: false,
+            administrator: false
+        }
+    })
+    profile.refreshToken = refreshToken;
     process.nextTick(function() {
         return done(null, profile)
     })
-}));
+});
+
+passport.use(discordStrat);
+refresh.use(discordStrat);
 
 passport.serializeUser((user, done) => done(null, user));
 passport.deserializeUser((user, done) => done(null, user));

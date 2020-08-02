@@ -8,17 +8,20 @@
 </div>
 <div *ngIf="!loading">
     <div class="page-header">
-        <mat-grid-list cols="9" gutterSize="15px">
-            <mat-grid-tile class="page-header-tile">
+        <mat-grid-list cols="9" rowHeight="64px" gutterSize="15px">
+            <mat-grid-tile rowspan="2" class="page-header-tile">
                 <img class="page-header-image page-header-item" [src]="bot.avatar">
             </mat-grid-tile>
             <mat-grid-tile colspan="5" class="page-header-tile">
-                <h1 class="mat-display-3 page-header-item">{{bot.name}}<span><br>{{bot.short_desc}}</span></h1>
+                <h1 class="mat-display-3 page-header-item">{{bot.name}}<mat-icon title="Not Approved" class="warn">hourglass_empty</mat-icon> <mat-icon title="Verified" class="success" *ngIf="bot.verified">verified</mat-icon></h1>
             </mat-grid-tile>
-            <mat-grid-tile  colspan="3" class="header-button-container">
+            <mat-grid-tile rowspan="2" colspan="3" class="header-button-container">
                 <button mat-button class="btn" style="animation-delay:0.07s"><mat-icon>link</mat-icon>Invite</button>
                 <button mat-button class="btn" style="animation-delay:0.14s"><mat-icon>contact_support</mat-icon>Support Link</button>
                 <button mat-button class="btn" style="animation-delay:0.21s"><mat-icon>done</mat-icon>Upvote</button>
+            </mat-grid-tile>
+            <mat-grid-tile colspan="5" class="page-header-tile">
+                <h2 class="page-header-item">{{bot.short_desc}}</h2>
             </mat-grid-tile>
         </mat-grid-list>
     </div>

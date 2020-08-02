@@ -8,7 +8,7 @@ const USER: User = {
   id: '239790360728043520',
   username: 'dondish',
   discriminator: '8072',
-  icon: 'https://cdn.discordapp.com/avatars/239790360728043520/109999a03001f63e4fc84725d118fe25.png?size=1024'
+  avatar: 'https://cdn.discordapp.com/avatars/239790360728043520/109999a03001f63e4fc84725d118fe25.png?size=1024'
 };
 
 // const USER: User = undefined;

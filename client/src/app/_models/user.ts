@@ -1,6 +1,6 @@
 export interface User {
     username: string;
     discriminator: string;
-    icon: string;
+    avatar: string;
     id: string;
 }

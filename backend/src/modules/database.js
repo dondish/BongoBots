@@ -96,3 +96,31 @@ module.exports.Bot = sequelize.define('Bot', {
         allowNull: false
     }
 });
+
+module.exports.User = sequelize.define('User', {
+    id: {
+        type: DataTypes.STRING,
+        primaryKey: true,
+        allowNull: false
+    },
+    avatar: {
+        type: DataTypes.STRING,
+        allowNull: true
+    },
+    username: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    discriminator: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    moderator: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false
+    },
+    administrator: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false
+    }
+});

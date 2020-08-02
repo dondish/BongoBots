@@ -53,7 +53,7 @@ export class AddBotComponent implements OnInit {
         support_server: new FormControl('', [Validators.pattern(/^(https:\/\/discord.gg\/[A-Za-z0-9]+)*$/)]),
         source_code: new FormControl('', [Validators.pattern(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&\/\/=]*)/)]),
         website: new FormControl('', [Validators.pattern(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&\/\/=]*)/)]),
-        ownerIds: new FormControl('', [Validators.required, Validators.pattern(/^([0-9]{18},{0,1})+$/)])
+        ownerIds: new FormControl('', [Validators.required, Validators.pattern(/^([0-9]{18},{0,1}){0,5}$/)])
     });
 
     constructor(private authService: AuthService, private botsService: BotsService, private snackBar: MatSnackBar) {
@@ -132,13 +132,8 @@ export class AddBotComponent implements OnInit {
             ownersIds: this.ownerIds.value
         }).subscribe(() => {
             this.snackBar.open('Successfully submitted the bot!');
-        }, () => {
-            this.snackBar.open('Failed to submit the bot.');
+        }, error => {
+            this.snackBar.open('Failed to submit the bot: ' + error.message);
         });
     }
 }
-// why are you in add_bot
-
-// im so confused, the docs are saying to do that? 
-// because its for the add bot form in Long Description area. <====================
-// https://material.angular.io/cdk/text-field/overview <--- <--- <--- <--- <--- <---

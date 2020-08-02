@@ -1,17 +1,3 @@
-const configure = (req, res, next) => {
-    if (req.user) {
-        //grab user info from database and assign it to userInfo
-
-        if (userInfo.isAdmin == true) req.user.admin = true;
-        if (userInfo.isMod == true) req.user.mod = true;
-        res.locals.user = req.user;
-        next();
-    } else {
-        res.locals.user = req.user;
-        next();
-    }
-};
-
 const auth = (req, res, next) => {
     if (req.user) {
         next()
@@ -49,7 +35,6 @@ const inServer = (req, res, next) => {
 };
 
 module.exports = {
-    configure, 
     auth, 
     mod, 
     admin,

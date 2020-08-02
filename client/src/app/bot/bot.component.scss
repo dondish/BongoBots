@@ -35,11 +35,25 @@ h1.page-header-item {
     padding-left: 10px;
     text-align: left;
     width: 100%;
-    & > span {
-        margin-left: 20px;
+
+    & > .mat-icon {
+        margin-left: 5px;
         font-size: 32px;
-        opacity: 50%;
+        &.success {
+            color: yellowgreen;
+        }
+        &.warn {
+            color: yellow;
+        }
     }
+}
+
+h2.page-header-item {
+    padding-left: 10px;
+    font-size: 32px;
+    opacity: 50%;
+    text-align: left;
+    width: 100%;
 }
 
 .page-header-image {
